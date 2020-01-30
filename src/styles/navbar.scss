@@ -1,0 +1,74 @@
+// Mixin
+@mixin responsive($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      @content;
+    } // 600px
+  }
+
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      @content;
+    } // 900px
+  }
+
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      @content;
+    } // 1200px
+  }
+}
+
+.nav {
+  height: 7rem;
+  font-size: 1.4rem;
+  background-color: $mainBlue;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+
+  &__logo-name {
+    color: #000000;
+    background-color: $mainWhite;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+}
+
+.search {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  &__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color:rgb(255, 255, 255);
+    border: none;
+    color: rgb(37, 37, 37);
+    padding: 0.7rem 2rem;
+    border-radius: 10rem;
+    width: 90%;
+    transition: all 200ms;
+    margin-right: -3rem;
+
+    @include responsive(tab-port) {
+      width: 100%;
+    }
+
+    &:focus {
+      width: 100%;
+      outline: none;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #737783;
+      font-weight: 100;
+    }
+  }
+  
+}
